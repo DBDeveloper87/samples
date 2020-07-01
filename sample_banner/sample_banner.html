@@ -29,16 +29,15 @@
 				left: 0;
 				bottom: 0;
 			}
-			.frontplane h2, .bannerWithBackgroundImage h2 {
+			.frontplane h2, .backgroundImage h2 {
 				font-size: 3em;
 				color: white;
 				background-color: transp;
 				text-align: center;
 			}
-			.bannerWithBackgroundImage {
-				width: 50%;
+			.backgroundImage {
 				background-image: url("background.jpg");
-				background-size: 50%;
+				background-size: 100%;
 				border: 10px solid blue;
 				border-radius: 50px;
 				text-align: center;
@@ -60,7 +59,7 @@
 			}
 
 			@media (inverted-colors: inverted) {
-				.frontplane h2, .bannerWithBackgroundImage h2 {
+				.frontplane h2, .backgroundImage h2 {
 					color: green;
 				}
 			}
@@ -86,9 +85,11 @@
 	
 		<p>This example below is the traditional way to do a banner; however, on macOS and iOS with Smart Invert the background night sky is inverted while Mars is left alone.</p>
 
-		<div class="bannerWithBackgroundImage">
-			<img src="mars.png" width="20%" margin="0 auto" alt="Mars Logo">
-			<h2>Hello World!</h2>
+		<div class="banner">
+			<div class="backgroundImage">
+				<img src="mars.png" width="20%" margin="0 auto" alt="Mars Logo">
+				<h2>Hello World!</h2>
+			</div>
 		</div>
 	
 	</body>
