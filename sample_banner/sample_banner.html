@@ -29,11 +29,20 @@
 				left: 0;
 				bottom: 0;
 			}
-			.frontplane h2 {
+			.frontplane h2, .bannerWithBackgroundImage h2 {
 				font-size: 3em;
 				color: white;
 				background-color: transp;
 				text-align: center;
+			}
+			.bannerWithBackgroundImage {
+				width: 50%;
+				background-image: url("background.jpg");
+				background-size: 50%;
+				border: 10px solid blue;
+				border-radius: 50px;
+				text-align: center;
+				padding: 15%;
 			}
 		
 			@media (prefers-color-scheme: dark) {
@@ -51,7 +60,7 @@
 			}
 
 			@media (inverted-colors: inverted) {
-				.frontplane h2 {
+				.frontplane h2, .bannerWithBackgroundImage h2 {
 					color: green;
 				}
 			}
@@ -64,18 +73,23 @@
 		<p>The below is a sample of a stacked banner of two divs where the back div holds an actual image background rather than a background-color or background-image property in CSS.</p>
 
 		<div class="banner">
-			<div class="backplane" id="back">
+			<div class="backplane">
 				<img src="background.jpg" width="100%" alt=" ">
 			</div>
 
-			<div class="frontplane" id="front">
+			<div class="frontplane">
 				<img src="mars.png" width="20%" margin="0 auto" alt="Mars Logo">
 				<h2>Hello World!</h2>
 			</div>
 		</div>
 
 	
-		<p>This text is below the banner div</p>
+		<p>This example below is the traditional way to do a banner; however, on macOS and iOS with Smart Invert the background night sky is inverted while Mars is left alone.</p>
+
+		<div class="bannerWithBackgroundImage">
+			<img src="mars.png" width="20%" margin="0 auto" alt="Mars Logo">
+			<h2>Hello World!</h2>
+		</div>
 	
 	</body>
 </html>
