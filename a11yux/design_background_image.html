@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<title>Sample</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>Designing an Accessible Banner for a Website Using a Background Image</h1>
+			<p><strong>Note:</strong> The headings in this article are purposely out of sematic order twice.  This is only to show an example in action and is not part of the actual sematic content.</em></p>
+
+			<p>Oftentimes websites these days use a banner that takes up the whole screen’s width when you land on the site.  For low vision users, this can pose an issue because they are usually utilizing their device’s low vision accessibility features.</p>
+		</div>
+
+		<div class="banner">
+			<div class="backplane">
+				<img src="images/banners/nightsky_background.png" width="100%" alt=" ">
+			</div>
+
+			<div class="frontplane">
+				<img src="images/banners/mars.png" width="20%" margin="0 auto" alt="Mars Logo">
+				<h2>Hello World!</h2>
+			</div>
+		</div>
+
+		<div class="container">
+			<p>On different platforms, here are some examples of behavior on websites when the user lands on the page.</p>
+			<ul>
+				<li>On macOS and iOS, there is a feature called Smart Invert.  This is basically like the old Classic Invert; however, when the system encounters an image on the page, that image does not get inverted.
+				(Try It Yourself)—Button that explands content to give instructions on how to enable Smart Invert
+				</li>
+
+				<li>On Windows 10, there is a feature called Windows High Contrast Mode.  Both images defined in HTML and background images defined in CSS are not inverted while the contrasts affect everything else.
+				</li>>
+
+				<li>On Windows 10, there is a feature called Invert Colors, which is part of the built-in Magnifier screen-magnification app.  Everything is inverted.
+				</li>
+
+				<li>In Chrome web browser’s Accessibility, there is an extension for High Contrast.. . . 
+				</li>
+				
+				<li>In Chrome web browser, there is an extension called Dark Reader. . . 
+				</li>
+
+				<li>On macOS, Mozilla Firefox. . . 
+				</li>
+			</ul>
+
+			<h2>In General Practice</h2>
+			<p>In general practice, a banner is created primarily from the CSS side of web development by way of the background-image property in a CSS class.  For example:</p>
+		</div>
+
+		<div class="banner">
+			<div class="backgroundImage">
+				<img src="images/banners/mars.png" width="20%" margin="0 auto" alt="Mars Logo">
+				<h2>Hello World!</h2>
+			</div>
+		</div>
+
+		<div class="container">
+			However, one issue with this is primarily with the Apple products like iOS and macOS, when Smart Invert is enabled, the background image itself is inverted but any HTML images defined are not as shown in the example above.
+			<h2>A Workaround</h2>
+			<p>There is, luckily a workaround for this.  It involves stacking layers onto the page by way of the z-index (the third dimension)</p>
+
+
+			<p>We will create three classes, .banner, .backplane, and .frontplane.  The .banner class is the “wrapper” that holds the two layers together, like a picture frame.  The .backplane class is the photo in the frame (the night sky).  Finally, .frontplane class is the glass of the photo frame that holds the actual content (the image of Mars and the “hello World!” text.</p>
+
+			<h2>Detecting the Use of Invert Colors</h2>
+			<p>Websites can detect that the user is using Invert Colors.  In the examples above, when invert colors is not in use, the text is white.  When Invert Colors is in use, the text appears white but is actually black because it is displaying the inverse of black.</p>
+
+			<p>To achieve this, we will use Media Queries, an advanced technique in CSS3 that is normally used for responsive design to detect the size of the screen and adjust accordingly.</p>
+
+			<h2>Detecting Dark Mode</h2>
+			<p>On many platforms today, the system now has Light or Dark Mode.  Websites can detect which is being used and switch over to a different set of styles related to that color scheme.  Again, this is another advanced technique in CSS derived from Media Queries.</p>
+
+			<p>One benefit of designing for Dark Mode is that unlike Invert Colors, the display is actually consistent across browsers that support this media feature.</p>
+		</div>
+
+	
+	</body>
+</html>
