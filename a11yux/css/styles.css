@@ -36,14 +36,14 @@
 			}
 		
 			@media (prefers-color-scheme: dark) {
-				body.dark-scheme {
+				body {
 					background-color: black;
 					color: white;
 					}
 				}
 		
 			@media (prefers-color-scheme: light) {
-  				body.light-scheme {
+  				body {
     				background-color: white;
     				color: black;
   				}
