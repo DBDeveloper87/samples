@@ -182,11 +182,11 @@ function animatePlayback() {
 function toggleFullScreen() {
   if (document.fullscreenElement) {
     document.exitFullscreen();
+  } else if (videoContainer.webkitRequestFullscreen) {
+    videoContainer.webkitRequestFullscreen();
   } else {
-    videoContainer.requestFullscreen();
-  }// else {
-    //videoContainer.webkitRequestFullscreen()
-  //}
+    videoContainer.requestFullscreen()
+  }
 }
 
 // updateFullscreenButton changes the icon of the full screen button
