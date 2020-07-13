@@ -184,7 +184,9 @@ function toggleFullScreen() {
     document.exitFullscreen();
   } else {
     videoContainer.requestFullscreen();
-  }
+  }// else {
+    //videoContainer.webkitRequestFullscreen()
+  //}
 }
 
 // updateFullscreenButton changes the icon of the full screen button
