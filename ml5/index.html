@@ -9,43 +9,24 @@
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2"></script>
         <!-- Load BodyPix -->
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script>
-
-	</head>
+        <script src="colorpop.js"></script>
+	      <style>
+          canvas {
+            width: 25%;
+          }
+        </style>
+  </head>
 
 	<body>
-    	<img id='image' src='images/person.png' width="50%" crossorigin='anonymous'/>
-	    <canvas id="canvas"></canvas>
+    <h1>Building the ML</h1>
+  
+    <canvas>
+      <script>
+        loadImage('images/person.png')
+      </script>
+  </canvas>
   </body>
   
-  	<!-- Place your code in the script tag below. You can also use an external .js file -->
   	
-  	<script>
-    	const img = document.getElementById('image');
-
-    	async function loadAndPredict() {
-      		const net = await bodyPix.load({
-                architecture: 'MobileNetV1',
-                outputStride: 16,
-                multiplier: 0.75,
-                quantBytes: 2
-            });
-      		const segmentation = await net.segmentPerson(img);
-      		console.log(segmentation);
-
-            // The mask image is an binary mask image with a 1 where there is a person and
-            // a 0 where there is not.
-            const coloredPartImage = bodyPix.toMask(segmentation);
-            const opacity = 0.7;
-            const flipHorizontal = false;
-            const maskBlurAmount = 0;
-            const canvas = document.getElementById('canvas');
-            // Draw the mask image on top of the original image onto a canvas.
-            // The colored part image will be drawn semi-transparent, with an opacity of
-           // 0.7, allowing for the original image to be visible under.
-            bodyPix.drawMask(
-                canvas, img, coloredPartImage, opacity, maskBlurAmount,
-                flipHorizontal);
-    	};
-    	loadAndPredict();
-  	</script>
+  	
 </html>
