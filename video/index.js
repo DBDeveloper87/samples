@@ -20,6 +20,7 @@ const videoContainer = document.getElementById('video-container');
 const fullscreenIcons = fullscreenButton.querySelectorAll('use');
 const pipButton = document.getElementById('pip-button')
 const subtitlesButton = document.getElementById('subtitles-button')
+const airPlayButton = document.getElementById('airPlayButton')
 
 const videoWorks = !!document.createElement('video').canPlayType;
 if (videoWorks) {
@@ -217,6 +218,11 @@ async function togglePip() {
   }
 }
 
+// Adds AirPlay support
+function toggleAirPlay() {
+
+}
+
 // toggleSubtitles toggles the subtitles menu
 //function toggleSubtitles() {
 //  if (video.textTracks[0].captionStatus('off')) {
@@ -294,6 +300,32 @@ video.addEventListener('mouseleave', hideControls);
 videoControls.addEventListener('mouseenter', showControls);
 videoControls.addEventListener('mouseleave', hideControls);
 // subtitlesButton = addEventListener('click', toggleSubtitles);
+
+// Checks for AirPlay Availability
+if (window.WebKitPlaybackTargetAvailabilityEvent) {
+     video.addEventListener('webkitplaybacktargetavailabilitychanged',
+         function(event) {
+             switch (event.availability) {
+             case "available":
+                 airPlayButton.hidden = false;
+                 airPlayButton.disabled = false;
+                 break;
+             case "not-available":
+                 airPlayButton.hidden = true;
+                 airPlayButton.disabled = true;
+                 break;
+              } }); 
+     
+     airPlayButton.addEventListener('click', function(event) {
+            video.webkitShowPlaybackTargetPicker();
+      });
+
+     video.addEventListener('webkitcurrentplaybacktargetiswirelesschanged', 
+            function(event) {
+                updateAirPlayButtonWirelessStyle();
+                updatePageDimmerForWirelessPlayback();
+      });
+} 
 
 
 // Check for PnP support
