@@ -19,82 +19,128 @@
 	<body>
             <div class="container">
                   <h1>Building the Media Player</h1>
-            
-                  <div class="video-container" id="video-container">
-                        <div class="playback-animation" id="playback-animation">
-                              <svg class="playback-icons">
-                                <use class="hidden" href="#play-icon"></use>
-                                <use href="#pause"></use>
-                              </svg>
-                        </div>
-
-                        <video controls class="video" id="video" preload="metadata">
-                              <source src="video/presentation.mp4" type="video/mp4"></source>
-                              <track label="English" kind="subtitles" srclang="en" src="subtitles/captions-en.vtt" default>
-                        </video>
-
-                        <div class="video-controls hidden" id="video-controls">
-                              <div class="video-progress">
-                                    <progress id="progress-bar" value="0" min="0"></progress>
-                                    <input class="seek" id="seek" value="0" min="0" type="range" step="1">
-                              <div class="seek-tooltip" id="seek-tooltip">00:00</div>
+      
+                  <figure>
+                        <div class="video-container" id="video-container">
+                              <div class="playback-animation" id="playback-animation">
+                                    <svg class="playback-icons">
+                                    <use class="hidden" href="#play-icon"></use>
+                                    <use href="#pause"></use>
+                                    </svg>
                               </div>
 
-                              <div class="bottom-controls">
-                                    <div class="left-controls">
-                                          <button data-title="Play (k)" id="play">
-                                                <svg class="playback-icons">
-                                                      <use href="#play-icon"></use>
-                                                      <use class="hidden" href="#pause"></use>
-                                                </svg>
-                                          </button>
+                              <video controls class="video" id="video" preload="metadata">
+                                    <source src="https://sitetesting.theroadwithoutbarriers.com/video/presentation.mp4" type="video/mp4"></source>
+                                    <track label="English" kind="subtitles" srclang="en" src="subtitles/captions-en.vtt" default>
+                              </video>
 
-                                          <div class="volume-controls">
-                                                <button data-title="Mute (m)" class="volume-button" id="volume-button">
-                                                      <svg>
-                                                            <use class="hidden" href="#volume-mute"></use>
-                                                            <use class="hidden" href="#volume-low"></use>
-                                                            <use href="#volume-high"></use>
+                              <div class="video-controls hidden" id="video-controls">
+                                    <div class="video-progress">
+                                          <progress id="progress-bar" value="0" min="0"></progress>
+                                          <input class="seek" id="seek" value="0" min="0" type="range" step="1">
+                                    <div class="seek-tooltip" id="seek-tooltip">00:00</div></div>
+
+                                    <div class="bottom-controls">
+                                          <div class="left-controls">
+                                                <button data-title="Play (k)" id="play">
+                                                      <svg class="playback-icons">
+                                                            <use href="#play-icon" aria-label="Play"></use>
+                                                            <use class="hidden" href="#pause" aria-label="Pause"></use>
                                                       </svg>
                                                 </button>
 
-                                                <input class="volume" id="volume" value="1" 
-                                                data-mute="0.5" type="range" max="1" min="0" step="0.01">
+                                                <div class="volume-controls">
+                                                      <button data-title="Mute (m)" class="volume-button" id="volume-button">
+                                                            <svg>
+                                                                  <use class="hidden" href="#volume-mute" aria-label="Unmute"></use>
+                                                                  <use class="hidden" href="#volume-low" aria-label="Volume Low"></use>
+                                                                  <use href="#volume-high" aria-label="Mute"></use>
+                                                            </svg>
+                                                      </button>
+
+                                                      <input aria-label="Volume" class="volume" id="volume" value="1" 
+                                                            data-mute="0.5" type="range" max="1" min="0" step="0.01">
+                                                </div>
+
+                                                <div class="time">
+                                                      
+                                                      <time id="time-elapsed">00:00</time> / <time id="duration">00:00</time>
+                                                </div>
                                           </div>
 
-                                          <div class="time">
-                                                <time id="time-elapsed">00:00</time>
-                                                <span> / </span>
-                                                <time id="duration">00:00</time>
+                                          <div class="right-controls">
+                                                <button data-title="Subtitles (s)" class="subtitle-button" id="subtitle-button" aria-label="CC">
+                                                      CC
+                                                </button>
+
+                                                <button data-title="AirPlay (a)" id="airPlayButton" hidden disabled aria-label="AirPlay">
+                                                      AirPlay
+                                                </button>
+
+                                                <button data-title="PIP (p)" class="pip-button" id="pip-button">
+                                                      <svg>
+                                                            <use href="#pip" aria-label="Toggle Picture in Picture"></use>
+                                                      </svg>
+                                                </button>
+                                                
+                                                <button data-title="Full screen (f)" class="fullscreen-button" id="fullscreen-button">
+                                                      <svg>
+                                                            <use href="#fullscreen" aria-label="Enter Fullscreen"></use>
+                                                            <use href="#fullscreen-exit" class="hidden" aria-label="Exit Fullscreen"></use>
+                                                      </svg>
+                                                </button>
                                           </div>
-                                    </div>
-
-                                    <div class="right-controls">
-                                          <button data-title="Subtitles (s)" class="subtitle-button" id="subtitle-button">
-                                                CC
-                                          </button>
-
-                                          <button data-title="AirPlay (a)" id="airPlayButton" hidden disabled>
-                                                AirPlay
-                                          </button>
-
-                                          <button data-title="PIP (p)" class="pip-button" id="pip-button">
-                                                <svg>
-                                                      <use href="#pip"></use>
-                                                </svg>
-                                          </button>
-                                          <button data-title="Full screen (f)" class="fullscreen-button" id="fullscreen-button">
-                                                <svg>
-                                                      <use href="#fullscreen"></use>
-                                                      <use href="#fullscreen-exit" class="hidden"></use>
-                                                </svg>
-                                          </button>
                                     </div>
                               </div>
                         </div>
-                        
-                  </div>
+                        <figcaption>
+                              This video is my first public speaking engagement in April 2007 at Lake Norman Charter School.  A special thank you to Casey Jenkins for her help in compiling the transcript to make captions possible and Levi Dokken for helping put the video discs together into one file.
+                        </figcaption>  
+                  </figure>
+
+                  <h2>The Work Done So Far</h2>
+                  <p>The media player is based on 
+                        <a href="https://developer.apple.com/documentation/webkitjs/adding_an_airplay_button_to_your_safari_media_controls">this HTML5 video creation tutorial</a>
+                        .  It case with basic functionality that relies on HTML5, CSS3 and JavaScript.  The player came with the ability to play/pause, mute/unmust, adjust volume, skip ahead, toggle between Picture in Picture (if browser supports it) and toggle fullscreen on and off.  It also came with some keyboard shortcuts as well such as:</p>
+                        <ul>
+                              <li>Play / Pause (press the K key)</li>
+                              <li>Mute / Unmust (press the M key)</li>
+                              <li>Toggle Picture in Picture (press the P key)</li>
+                              <li>Toggle Fullscreen (press the F key)<br>
+                                    <strong>Note: </strong>The F key does not work to exit fullscreen in Safari; however you can press the ESC key.</li>
+                        </ul>
+                  <h3>Modifications</h3>
+                  <p>Out of the box, even this media player was not truly accessible, and some functionality did not actually work.  Below is a list of modifications made so far:</p>
+                        <ul>
+                              <li>The fullscreen functionality did not work out of the box in Safari, but did in all other major browsers.  This was fixed by adding the supporting code for the WebKit version of Fullscreen, since Safari only partially supports the Fullscreen API.</li>
+                              <li>The tooltips were too high up when reading them with magnification (positioned at -50px above the buttons) so I moved them down to -20px.  If the mouse hover leaves the button area to try and read the whole tooltip it unfortunately vanishes.</li>
+                              <li>Proper labels have been added to the buttons on the Media Control bar using ARIA's <code>aria-label</code> attribute.</li>
+                        </ul>
+                  <h3>Extending the Player's Capabilities</h3>
+                  <p>As of this writing, I have extended the player's capabilities as follows:</p>
+                        <ul>
+                              <li>Added support for Air Play<br>
+                                    <strong>Note: </strong>The keyboard support hasn't been added yet but the command is listed in the tooltip as a placeholder.</li>
+                              <li>Added the HTML Markup for the captions/subtitles btton but is currently not functional via JavaScript</li>
+                              <li>On the page, the player is now wrapped inside of a sematic tag <code>figure</code> which gives it a slight border and the ability to add a figure caption using the <code>figcaption</code> tag.</li>
+                        </ul>
+                  <h2>Issues Identified</h2>
+                  <p>The following issues have been identified out of the box</p>
+                        <ul>
+                              <li>The volume control in Braille is an adjustable slider that moves from 0 to 1 at a rate of 0.01 per adjustment.  It should be moving at a rate of 0.1 or 10% of the slider.  To speech and Braille users it should read as "Volume 0% adjustable" or "Volume 50% adjustable" and so on.  Need to add ARIA for this.</li>
+                              <li>The elapsed time and duration on a Braille display currently read as <br>
+                                    00:00 <br>
+                                    / <br>
+                                    40:22 <br>
+                                    instead of <br>
+                                    00:00 / 40:22
+                              as displayed on the screen itself.</li>
+                              <li>The time scrubber (the progress bar with a thumb button to slide back and forth) is actually two elements so it is confusing to the Braille display.  We only need the information from the slider and this should be moving at a rate of 10 seconds or so when using the adjustable with a screen reader.  It should also be reading out the time stamp instead of the actual range on the slider.</li>
+                              <li>The player does not stay within the Safari page on an iPhone and automatically goes full screen (using the default OS full screen).  This is not practical for a future feature, so solving this issue is key.</li>
+                        </ul>
             </div>
+
+
 
             <svg style="display: none">
                   <defs>
