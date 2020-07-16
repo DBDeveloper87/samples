@@ -21,7 +21,6 @@ const fullscreenIcons = fullscreenButton.querySelectorAll('use');
 const pipButton = document.getElementById('pip-button')
 const subtitlesButton = document.getElementById('subtitles-button')
 const airPlayButton = document.getElementById('airPlayButton')
-var timeControlString = document.getElementById('timeControl')
 
 const videoWorks = !!document.createElement('video').canPlayType;
 if (videoWorks) {
@@ -90,6 +89,7 @@ function initializeVideo() {
   duration.innerText = `${time.minutes}:${time.seconds}`;
   duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
 }
+
 
 // updateProgress indicates how far through the video
 // the current playback is by updating the progress bar
@@ -337,3 +337,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('keyup', keyboardShortcuts);
+
+// document.getElementById('timeStamp').innerHTML = timeElapsed + " / " + duration;

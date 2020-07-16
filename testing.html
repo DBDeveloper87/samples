@@ -2,17 +2,31 @@
 <html>
 	<head>
 		<title>Testing</title>
+		<style>
+			body {
+				width: 80%;
+				margin: 0 auto;
+			}
+		</style>
 	</head>
 
 	<body>
-		<video src="http://sitetesting.theroadwithoutbarriers.com/video/presentation.mp4" width="40%" mediagroup="master"></video>
-		<video src="http://sitetesting.theroadwithoutbarriers.com/video/presentation.mp4" width="40%" mediagroup="master"></video>
-	
+		<p id="support"></p>
+
 		<script>
-			var myVideo = document.querySelector('video');
-			var mediaController = myVideo.controller;
-			mediaController.play();
-		</script>
+		function checkSupport() {
+    if (!("MediaController" in window)) {
+        return "unsupported";
+    }
+    var mc = new MediaController();
+    if ("onended" in mc) {
+        return "supported";
+    } else {
+        return "partially supported";
+    }
+}
+document.getElementById('support').innerHTML = checkSupport();
+</script>
 
 	</body>
 </html>
