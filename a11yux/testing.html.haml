@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-
+!!!
 %html{:lang => "en"}
 
 	%head
@@ -15,10 +14,10 @@
 		.container
 			%h1 Designing an Accessible Banner for a Website Using a Background Image
 			%p 
-				%strong Note: 
-				The headings in this article are purposely out of sematic order twice.  This is only to show an example in action and is not part of the actual sematic content.</em></p>
+				%strong 
+					Note: The headings in this article are purposely out of sematic order twice.  This is only to show an example in action and is not part of the actual sematic content.
 
-			%p Oftentimes websites these days use a banner that takes up the whole screen’s width when you land on the site.  For low vision users, this can pose an issue because they are usually utilizing their device’s low vision accessibility features.</p>
+			%p Oftentimes websites these days use a banner that takes up the whole screen’s width when you land on the site.  For low vision users, this can pose an issue because they are usually utilizing their device’s low vision accessibility features.
 		
 		.banner
 			.backplane
@@ -29,13 +28,17 @@
 				%h2 Hello World!
 
 		.container
-			%p On different web browsers, the above banner behaves differently depending on the settings the user is using at the OS level.  For example:
+			%p 
+				On different web browsers, the above banner behaves differently depending on the settings the user is using at the OS level.  For example:
 				%ul
-					%li On iOS and macOS in the Safari browser, when the user it using Smart Invert Colors, the banner’s background of the night sky remains the same, as does the image of Mars.  The text “Hello World!” becomes the inverse of green.<br>
+					%li 
+						On iOS and macOS in the Safari browser, when the user it using Smart Invert Colors, the banner’s background of the night sky remains the same, as does the image of Mars.  The text “Hello World!” becomes the inverse of green.<br>
 						%img{:src => "images/screenshots/ios_and_macos_safari/safari1.png", :width => "100%", :alt => "iOS and macOS without Smart Invert"}
 						%br
 						%img{:src => "images/screenshots/ios_and_macos_safari/safari3.png", :width => "100%", :alt => "iOS and macOS with Smart Invert"}
-					%li On Windows 10 in Microsoft Edge, while Windows High Contrast Mode is enabled the image of the night sky and Mars do not change; however, a box with a black border appears behind the text of “Hello World!” and the text itself is white.  When Windows Magnifier’s Invert Colors is enabled, the image of the night sky and Mars become inverted to a bright white and the text is black.<br>
+					%li 
+						On Windows 10 in Microsoft Edge, while Windows High Contrast Mode is enabled the image of the night sky and Mars do not change; however, a box with a black border appears behind the text of “Hello World!” and the text itself is white.  When Windows Magnifier’s Invert Colors is enabled, the image of the night sky and Mars become inverted to a bright white and the text is black.
+						%br
 						%img{:src => "images/screenshots/win_edge/edgereg.png", :width => "100%", :alt => "Microsoft Edge on Windows 10 Normal View"}
 						%br
 						%img{:src => "images/screenshots/win_edge/edgehc.png", :width => "100%", :alt => "Microsoft Edge on Windows 10 with Windows High Contrast Mode"}
