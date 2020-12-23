@@ -225,13 +225,15 @@ function toggleAirPlay() {
 }
 
 // toggleSubtitles toggles the subtitles menu
-//function toggleSubtitles() {
-//  if (video.textTracks[0].captionStatus('off')) {
-//    video.textTracks[0].captionStatus('on')
-//  } else {
-//    video.textTracks[0].captionStatus('off')
-//  }
-//}
+function toggleSubtitles() {
+  if (video.textTracks[0].captionStatus('off')) {
+    video.textTracks[0].captionStatus('on')
+  } else {
+    video.textTracks[0].captionStatus('off')
+  }
+}
+
+
 
   
 
@@ -300,7 +302,7 @@ video.addEventListener('mouseenter', showControls);
 video.addEventListener('mouseleave', hideControls);
 videoControls.addEventListener('mouseenter', showControls);
 videoControls.addEventListener('mouseleave', hideControls);
-// subtitlesButton = addEventListener('click', toggleSubtitles);
+subtitlesButton.addEventListener('click', toggleSubtitles);
 
 // Checks for AirPlay Availability
 if (window.WebKitPlaybackTargetAvailabilityEvent) {
