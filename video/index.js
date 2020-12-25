@@ -19,26 +19,23 @@ const fullscreenButton = document.getElementById('fullscreen-button');
 const videoContainer = document.getElementById('video-container');
 const fullscreenIcons = fullscreenButton.querySelectorAll('use');
 const pipButton = document.getElementById('pip-button')
-const subtitlesButton = document.getElementById('subtitles-button')
-const airPlayButton = document.getElementById('airPlayButton')
 
+// Check if browser supports HTML5 video.
 const videoWorks = !!document.createElement('video').canPlayType;
 if (videoWorks) {
-	video.controls = false;
-	videoControls.classList.remove('hidden');
+  video.controls = false;
+  videoControls.classList.remove('hidden');
 }
-
-// Add functions here
 
 // togglePlay toggles the playback state of the video.
 // If the video playback is paused or ended, the video is played
 // otherwise, the video is paused
 function togglePlay() {
-	if (video.paused || video.ended) {
-		video.play();
-	} else {
-		video.pause();
-	}
+  if (video.paused || video.ended) {
+    video.play();
+  } else {
+    video.pause();
+  }
 }
 
 // updatePlayButton updates the playback icon and tooltip
@@ -47,9 +44,9 @@ function updatePlayButton() {
   playbackIcons.forEach(icon => icon.classList.toggle('hidden'));
 
   if (video.paused) {
-  	playButton.setAttribute('data-title', 'Play (k)')
+    playButton.setAttribute('data-title', 'Play (k)')
   } else {
-  	playButton.setAttribute('data-title', 'Pause (k)')
+    playButton.setAttribute('data-title', 'Pause (k)')
   }
 }
 
@@ -68,6 +65,8 @@ function formatTime(timeInSeconds) {
 // progressBar
 function initializeVideo() {
   const videoDuration = Math.round(video.duration);
+  seek.setAttribute('max', videoDuration);
+  progressBar.setAttribute('max', videoDuration);
   const time = formatTime(videoDuration);
   duration.innerText = `${time.minutes}:${time.seconds}`;
   duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
@@ -80,16 +79,6 @@ function updateTimeElapsed() {
   timeElapsed.innerText = `${time.minutes}:${time.seconds}`;
   timeElapsed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
 }
-
-function initializeVideo() {
-  const videoDuration = Math.round(video.duration);
-  seek.setAttribute('max', videoDuration);
-  progressBar.setAttribute('max', videoDuration);
-  const time = formatTime(videoDuration);
-  duration.innerText = `${time.minutes}:${time.seconds}`;
-  duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
-}
-
 
 // updateProgress indicates how far through the video
 // the current playback is by updating the progress bar
@@ -184,10 +173,15 @@ function animatePlayback() {
 function toggleFullScreen() {
   if (document.fullscreenElement) {
     document.exitFullscreen();
-  } else if (videoContainer.webkitRequestFullscreen) {
+  } 
+  else if (document.webkitFullscreenElement) {
+    document.webkitExitFullscreen();
+  }
+  else if (videoContainer.webkitRequestFullscreen) {
     videoContainer.webkitRequestFullscreen();
-  } else {
-    videoContainer.requestFullscreen()
+  }
+  else {
+    videoContainer.requestFullscreen();
   }
 }
 
@@ -218,24 +212,6 @@ async function togglePip() {
     pipButton.disabled = false;
   }
 }
-
-// Adds AirPlay support
-function toggleAirPlay() {
-
-}
-
-// toggleSubtitles toggles the subtitles menu
-function toggleSubtitles() {
-  if (video.textTracks[0].captionStatus('off')) {
-    video.textTracks[0].captionStatus('on')
-  } else {
-    video.textTracks[0].captionStatus('off')
-  }
-}
-
-
-
-  
 
 // hideControls hides the video controls when not in use
 // if the video is paused, the controls must remain visible
@@ -280,7 +256,6 @@ function keyboardShortcuts(event) {
   }
 }
 
-
 // Add eventlisteners here
 playButton.addEventListener('click', togglePlay);
 video.addEventListener('play', updatePlayButton);
@@ -302,42 +277,11 @@ video.addEventListener('mouseenter', showControls);
 video.addEventListener('mouseleave', hideControls);
 videoControls.addEventListener('mouseenter', showControls);
 videoControls.addEventListener('mouseleave', hideControls);
-subtitlesButton.addEventListener('click', toggleSubtitles);
 
-// Checks for AirPlay Availability
-if (window.WebKitPlaybackTargetAvailabilityEvent) {
-     video.addEventListener('webkitplaybacktargetavailabilitychanged',
-         function(event) {
-             switch (event.availability) {
-             case "available":
-                 airPlayButton.hidden = false;
-                 airPlayButton.disabled = false;
-                 break;
-             case "not-available":
-                 airPlayButton.hidden = true;
-                 airPlayButton.disabled = true;
-                 break;
-              } }); 
-     
-     airPlayButton.addEventListener('click', function(event) {
-            video.webkitShowPlaybackTargetPicker();
-      });
-
-     video.addEventListener('webkitcurrentplaybacktargetiswirelesschanged', 
-            function(event) {
-                updateAirPlayButtonWirelessStyle();
-                updatePageDimmerForWirelessPlayback();
-      });
-} 
-
-
-// Check for PnP support
 document.addEventListener('DOMContentLoaded', () => {
   if (!('pictureInPictureEnabled' in document)) {
     pipButton.classList.add('hidden');
   }
 });
-
 document.addEventListener('keyup', keyboardShortcuts);
 
-// document.getElementById('timeStamp').innerHTML = timeElapsed + " / " + duration;
