@@ -329,7 +329,7 @@ h1 {
 }
 
 .speedControls {
-  display: none;
+  display: inline-block;
 }
 
 .board {
@@ -341,6 +341,12 @@ h1 {
   width: 45%;
   text-align: center;
 }
+
+video::cue {
+  color: yellow;
+  font-size: 4.5rem;
+}
+
 
 @media (prefers-color-scheme: dark) {
   body {
