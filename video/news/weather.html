@@ -155,7 +155,10 @@
                   console.log(video.playbackRate)
             }
             function setSrc(derivation) {
+                  var oldTime = video.currentTime;
                   video.setAttribute("src", derivation);
+                  video.currentTime = oldTime;
+                  video.play();
             }
       </script>
 </html>
