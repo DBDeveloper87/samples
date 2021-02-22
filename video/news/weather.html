@@ -150,16 +150,22 @@
 </body>
 	<script src="index.js"></script>
       <script>
-            
+            var newTime = 0;
+            video.addEventListener('loadedmetadata', videoMetaDataLoaded);
+
+            function videoMetaDataLoaded() {
+              video.currentTime = newTime;
+              video.play();
+            }
+
             function setSpeed(speed) {
                   video.playbackRate = speed
                   console.log(video.playbackRate)
             }
+            
             function setSrc(derivation) {
-                  var oldTime = video.currentTime;
-                  video.setAttribute("src", derivation);
-                  video.currentTime = oldTime;
-                  video.play();
+                  newTime = video.currentTime;
+                  video.setAttribute('src', derivation);
             }
       </script>
 </html>
